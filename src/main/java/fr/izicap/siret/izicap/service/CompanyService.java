@@ -23,20 +23,14 @@ public class CompanyService {
     }
 
     public EtablissementRoot retrieveCampanyBySiret(String siret) throws CompanyNotFoundException, IzicapTechnicalException {
-        //try {
-            EtablissementRoot company = restTemplate.getForObject(
-                    IzicapConstants.PUBLIC_SIRENE_API + siret,
-                        EtablissementRoot.class);
+        EtablissementRoot company = restTemplate.getForObject(
+                IzicapConstants.PUBLIC_SIRENE_API + siret,
+                    EtablissementRoot.class);
 
-            // Add or Update the csv store with the last result
-            repository.updateStore(company);
+        // Add or Update the csv store with the last result
+        repository.updateStore(company);
 
-            return company;
-
-       /* }catch (Exception ex){
-            LOGGER.error("", ex);
-            throw new CompanyNotFoundException(siret);
-        }*/
+        return company;
     }
 
 }

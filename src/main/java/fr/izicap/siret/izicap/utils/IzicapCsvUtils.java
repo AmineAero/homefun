@@ -22,7 +22,7 @@ public class IzicapCsvUtils {
     }
 
     public static void addOneLine(String[] lineToAdd, String path) throws IOException {
-        CSVWriter writer = new CSVWriter(new FileWriter(path.toString(), true),
+        CSVWriter writer = new CSVWriter(new FileWriter(path, true),
                 CSVWriter.DEFAULT_SEPARATOR,
                 CSVWriter.NO_QUOTE_CHARACTER,
                 CSVWriter.NO_ESCAPE_CHARACTER,
@@ -32,7 +32,7 @@ public class IzicapCsvUtils {
         writer.close();
     }
 
-    public static List readAllLines(String path) throws IOException {
+    public static List<String[]> readAllLines(String path) throws IOException {
         CSVReader reader = new CSVReader(new FileReader(path));
         List<String[]> csvBody = reader.readAll();
         reader.close();
