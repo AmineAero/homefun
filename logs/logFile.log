@@ -1,0 +1,11 @@
+[2022-05-30 16:07:23,832][INFO][main][f.i.s.i.IzicapApplication] Starting IzicapApplication using Java 17.0.3.1 on DESKTOP-KA2M8LB with PID 14584 (C:\Dev\workspace\izicap\target\classes started by amine in C:\Dev\workspace\izicap)
+[2022-05-30 16:07:23,832][INFO][main][f.i.s.i.IzicapApplication] No active profile set, falling back to 1 default profile: "default"
+[2022-05-30 16:07:24,937][INFO][main][o.s.b.w.e.t.TomcatWebServer] Tomcat initialized with port(s): 8080 (http)
+[2022-05-30 16:07:24,952][INFO][main][o.a.c.h.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+[2022-05-30 16:07:24,952][INFO][main][o.a.c.c.StandardService] Starting service [Tomcat]
+[2022-05-30 16:07:24,952][INFO][main][o.a.c.c.StandardEngine] Starting Servlet engine: [Apache Tomcat/9.0.63]
+[2022-05-30 16:07:25,046][INFO][main][o.a.c.c.C.[.[.[/]] Initializing Spring embedded WebApplicationContext
+[2022-05-30 16:07:25,046][INFO][main][o.s.b.w.s.c.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 1145 ms
+[2022-05-30 16:07:25,406][INFO][main][o.a.c.h.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+[2022-05-30 16:07:25,437][INFO][main][o.s.b.w.e.t.TomcatWebServer] Tomcat started on port(s): 8080 (http) with context path ''
+[2022-05-30 16:07:25,437][INFO][main][f.i.s.i.IzicapApplication] Started IzicapApplication in 1.975 seconds (JVM running for 2.442)
