@@ -25,7 +25,7 @@ public class CompanyRepository {
             List<String[]> csvBody = IzicapCsvUtils.readAllLines(csvStorePath);
 
             // get CSV row and replace it by the last Etablisement information
-            int index = checkIfTheEtablissementExist(company.getEtablissement().getId(), csvBody);
+            int index = checkIfTheCompanyExist(company.getEtablissement().getId(), csvBody);
 
             if(index == 0) {
                 // Add a new line with the etablissement to the csv store
@@ -47,15 +47,15 @@ public class CompanyRepository {
     /**
      * Check if the company existe by his ID in the CSV store and return the line's index if true
      * Otherwie return 0.
-     * @param etablissementId
-     * @param csvBody
+     * @param companyId
+     * @param linesList
      * @return int
      */
-    private int checkIfTheEtablissementExist(int etablissementId, List<String[]> csvBody) {
+    private int checkIfTheCompanyExist(int companyId, List<String[]> linesList) {
         int index = 0;
-        String strEtabId = String.valueOf(etablissementId);
-        for(String[] line : csvBody){
-            if(line[0].equals(strEtabId)){
+        String strCompanyId = String.valueOf(companyId);
+        for(String[] line : linesList){
+            if(strCompanyId.equals(line[0])){
                 return index;
             }
             index++;
