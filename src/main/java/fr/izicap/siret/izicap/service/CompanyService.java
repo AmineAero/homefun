@@ -3,7 +3,7 @@ package fr.izicap.siret.izicap.service;
 import fr.izicap.siret.izicap.exception.CompanyNotFoundException;
 import fr.izicap.siret.izicap.exception.IzicapTechnicalException;
 import fr.izicap.siret.izicap.model.etablissement.EtablissementRoot;
-import fr.izicap.siret.izicap.repository.EtablissementRepository;
+import fr.izicap.siret.izicap.repository.CompanyRepository;
 import fr.izicap.siret.izicap.utils.IzicapConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +14,10 @@ import org.springframework.web.client.RestTemplate;
 public class CompanyService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CompanyService.class);
-    EtablissementRepository repository;
+    CompanyRepository repository;
     RestTemplate restTemplate;
 
-    public CompanyService(EtablissementRepository repository, RestTemplate restTemplate) {
+    public CompanyService(CompanyRepository repository, RestTemplate restTemplate) {
         this.repository = repository;
         this.restTemplate = restTemplate;
     }

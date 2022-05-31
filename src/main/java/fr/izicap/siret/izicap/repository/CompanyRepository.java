@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.util.List;
 
 @Repository
-public class EtablissementRepository {
+public class CompanyRepository {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EtablissementRepository.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CompanyRepository.class);
 
     @Value("${izicap.store.csv.path}")
     private String csvStorePath;

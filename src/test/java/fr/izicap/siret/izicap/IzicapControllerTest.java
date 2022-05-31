@@ -1,10 +1,9 @@
 package fr.izicap.siret.izicap;
 
-import fr.izicap.siret.izicap.repository.EtablissementRepository;
+import fr.izicap.siret.izicap.repository.CompanyRepository;
 import fr.izicap.siret.izicap.service.CompanyService;
 import fr.izicap.siret.izicap.utils.IzicapConstants;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -30,7 +29,7 @@ public class IzicapControllerTest {
     @Mock
     private CompanyService companyService;
     @Mock
-    private EtablissementRepository etablissementRepository;
+    private CompanyRepository companyRepository;
 
     @BeforeAll
     public static void init(){

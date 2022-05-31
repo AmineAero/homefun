@@ -1,6 +1,7 @@
 package fr.izicap.siret.izicap.utils;
 
 import com.opencsv.CSVReader;
+import fr.izicap.siret.izicap.TestUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -29,8 +30,7 @@ class IzicapCsvUtilsTest {
 
     @AfterEach
     void tearDown() {
-        File file = new File(CSV_FILE_NAME);
-        file.delete();
+        TestUtils.deleteTestFile(CSV_FILE_NAME);
     }
 
     @Test
@@ -41,7 +41,7 @@ class IzicapCsvUtilsTest {
         IzicapCsvUtils.writeAll(companies, CSV_FILE_NAME);
 
         // Then
-        List<String[]> csvBody = readAllLinesFromCsvFile();
+        List<String[]> csvBody = TestUtils.readAllLinesFromCsvFile(CSV_FILE_NAME);
         assertEquals(2, csvBody.size());
 
     }
@@ -50,14 +50,14 @@ class IzicapCsvUtilsTest {
     void addOneLine() throws IOException {
         // Given
         IzicapCsvUtils.writeAll(companies, CSV_FILE_NAME);
-        List<String[]> csvBody = readAllLinesFromCsvFile();
+        List<String[]> csvBody = TestUtils.readAllLinesFromCsvFile(CSV_FILE_NAME);
         assertEquals(2, csvBody.size());
 
         // When
         IzicapCsvUtils.addOneLine(COMPANY2.split(","), CSV_FILE_NAME);
 
         // Then
-        csvBody = readAllLinesFromCsvFile();
+        csvBody = TestUtils.readAllLinesFromCsvFile(CSV_FILE_NAME);
         assertEquals(3, csvBody.size());
     }
 
@@ -71,12 +71,5 @@ class IzicapCsvUtilsTest {
 
         // Then
         assertEquals(2, csvBody.size());
-    }
-
-    private List<String[]> readAllLinesFromCsvFile() throws IOException {
-        CSVReader reader = new CSVReader(new FileReader(CSV_FILE_NAME));
-        List<String[]> allLines = reader.readAll();
-        reader.close();
-        return allLines;
     }
 }
