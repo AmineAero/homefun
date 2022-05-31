@@ -31,15 +31,12 @@ pipeline {
             }
             when {
                 beforeAgent true
-                branch 'master'
+                branch 'main'
             }
             steps {
                 script {
                     pom = readMavenPom(file: 'izicap/pom.xml')
-                    echo "-- build and deploiement of the artifact ${pom.artifactId} version ${pom.version} on Artifactory "
-                    withCredentials([usernamePassword(credentialsId: 'my-credentialsId-deploy', usernameVariable: 'ARTIFACTORY_UPLOAD_USER', passwordVariable: 'ARTIFACTORY_UPLOAD_PASSWORD')]) {
-                        sh 'mvn -s settings.xml clean deploy'
-                    }
+                    sh 'mvn -s settings.xml clean install'
                     stash includes: 'izicap/target/**/*', name: 'buildMaven'
                 }
             }
@@ -48,15 +45,15 @@ pipeline {
             agent any
             when {
                 beforeAgent true
-                branch 'master'
+                branch 'main'
             }
             steps {
                 script {
                     echo "Build Image Docker ${pom.artifactId}:${pom.version}"
                     unstash 'buildMaven'
                     image = docker.build("${pom.artifactId}:${pom.version}")
-                    echo 'Docker Push'
-                    docker.withRegistry('https://URI_OF_ACTIFACTORY', 'my-credentialsId-deploy') {
+                    echo 'Docker Push to DockerHub'
+                    docker.withRegistry('monik/devinprogress', 'aero-token-deploy') {
                         image.push()
                     }
                 }
